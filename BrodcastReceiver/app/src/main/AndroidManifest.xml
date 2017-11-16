@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="brodcast.begi.com.brodcastreceiver">
+    <uses-permission android:name="android.permission.VIBRATE" />  <!-- Titreşim -->
+
+    <receiver android:name=".receiver.SMSReceiver" >
+        <intent-filter>
+            <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+        </intent-filter>
+    </receiver>
+
+    <receiver android:name=".receiver.AirplaneModeReceiver" >
+        <intent-filter>
+            <action android:name="android.intent.action.AIRPLANE_MODE" />
+        </intent-filter>
+    </receiver>
+
+    <receiver
+        android:name=".receiver.MyReceiver"
+        android:exported="false" >
+        <intent-filter>
+            <action android:name="brodcast.begi.com.brodcastreceiver.intent.TITRESIM_INTENT" />
+        </intent-filter>
+    </receiver>
 
     <application
         android:allowBackup="true"
